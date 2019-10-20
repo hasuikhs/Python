@@ -120,5 +120,94 @@
       # E
       ```
 
+   3. ###### Linked List의 삭제
+   
+      ```python
+      class Node:
+          def __init__(self, data, next=None):
+              self.data = data
+              self.next = next
+              
+      def init_list():
+          global node_A
+          node_A = Node("A")
+          node_B = Node("B")
+          node_D = Node("D")
+          node_E = Node("E")
+          node_A.next = node_B
+          node_B.next = node_D
+          node_D.next = node_E
+          
+      # 노드를 삭제하는 함수
+      def delete_node(del_data):	# 인수로 del_data를 받음
+          global node_A			# global로 node_A로 선언한 Linked List를 사용
+          pre_node = node_A		# 이 Linked List를 가리키는 pre_node 선언
+          next_node = pre_node.next 	# pre_node의 다음 노드에 해당하는 
+          							# pre_node.next를 nexgt_node로 선언
+          if pre_node.data == del_data:	# 현재 Linked List의 첫번쨰 노드인 pre_node.data가
+              							# 삭제할 del_data라면 삭제할 노드가 가장 첫번째 노드
+              node_A = next_node		# node_A에 next_node를 저장하고
+              del pre_node			# 현재 노드인 pre_node를 삭제한 후에 
+              return					# delete_node() 함수 리턴
+          
+          while next_node:		# 현재 Linked List를 가리키는 next_node가 존재할 동안
+              if next_node.data == del_data:	# next_node의 data가 인수로 받은 삭제할 
+                  							# 데이터인 del_data와 같다면
+                      						# next_node의 다음 노드를 가리키는 링크를 
+                  pre_node.next = next_node.next	# 이전 노드인 pre_node의 next에 자장
+                  del next_node				# next_node를 삭제한 후에 리턴
+                  break
+              # 그러나 next_node.data가 인수로 받은 del_data와 같지 않다면
+              pre_node = next_node	# 이전 노드인 pre_node는 현재 노드인 next_node를 가리킴
+              next_node = next_node.next	# next_node는 next_node.next를 가리킴
+      
+      def insert_node(data):
+          global node_A
+          new_node = Node(data)
+          node_P = node_A
+          node_T = node_A
+          while node_T.data <= data:
+              node_P = node_T
+              node_T = node_T.next
+          new_node.next = node_T
+          node_P.next = new_node
+          
+      def print_list():
+          global node_A
+          node = node_A
+          while node:
+              print(node.data)
+              node = node.next
+          print
+          
+      if __name__ == '__main__' :
+          print("연결 리스트 초기화 후")
+          init_list()
+          print_list()
+          print("노드 C를 추가한 후")
+          insert_node("C")
+          print_list()
+          print("노드 D를 삭제한 후")
+          delete_node("D")
+          print_list()
+          
+      # 연결 리스트 초기화 후
+      # A
+      # B
+      # D
+      # E
+      # 노드 C를 추가한 후
+      # A
+      # B
+      # C
+      # D
+      # E
+      # 노드 D를 삭제한 후
+      # A
+      # B
+      # C
+      # E
+      ```
+   
       
 
