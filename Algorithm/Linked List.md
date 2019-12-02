@@ -209,5 +209,139 @@
       # E
       ```
    
-      
 
+2. ##### 이중 연결 리스트
+
+   1. ###### 이중 연결 리스트?
+
+      - 연결 리스트는 배열과 달리 프로그램의 실행 중에도 새로운 노드를 삽입 또는 삭제하기가 간단하다.
+      - 하지만, 무조건 한 방향으로만 링크를 따라가야 하기 때문에 다소 불편한 점이 존재한다.
+
+      ```PYTHON
+      class Node:
+          def __init__(self, data, next=None, prev=None):
+              self.data = data
+              self.next = next
+              self.prev = prev
+          
+      def init_list():
+          global node_A
+          node_A = Node('A')
+          node_B = Node('B')
+          node_D = Node('D')
+          node_E = Node('E')
+          node_A.next = node_B
+          node_B.next = node_D
+          node_B.prev = node_A
+          node_D.next = node_E
+          node_E.prev = node_D
+      
+      def print_list():
+          global node_A
+          node = node_A
+          while node:
+              print(node.data)
+              node = node.next
+          print
+          
+      if __name__ == '__main__':
+          print('연결리스트 초기화 후')
+          init_list()
+          print_list()
+      ```
+
+      ```
+      연결리스트 초기화 후
+      A
+      B
+      D
+      E
+      ```
+
+   2. ###### 삽입 알고리즘
+
+      - 삽입할 때는 단일 연결 리스트의 삽입과 동일하다.
+
+      ```python
+      def print_list():
+          global node_A
+          node = node_A
+          while node:
+              print(node.data)
+              node = node.next
+          print
+          
+      def insert_node(data):
+          global node_A
+          new_node = Node(data)
+          node_P = node_A
+          node_T = node_A
+          while node_T.data <= data:
+              node_P = node_T
+              node_T = node_T.next
+          new_node.next = node_T
+          node_P.next = new_node
+          new_node.prev = node_P
+          node_T.prev = new_node
+      
+      if __name__ == '__main__':
+          print('연결리스트 초기화 후')
+          init_list()
+          print_list()
+      
+          print('노드 C 추가 후')
+          insert_node('C')
+          print_list()
+      ```
+
+      ```
+      연결리스트 초기화 후
+      A
+      B
+      D
+      E
+      노드 C 추가 후
+      A
+      B
+      C
+      D
+      E
+      ```
+
+   3. ###### 삭제 알고리즘
+
+      ```python
+      def delete_node(del_data):
+          global node_A
+          pre_node = node_A
+          next_node = pre_node.next
+          next_next_node = next_node.next
+      
+          if pre_node.data == del_data:
+              node_A = next_node
+              del pre_node
+              return
+          
+          while next_node:
+              if next_node.data == del_data:
+                  next_next_node = next_node.next
+                  pre_node.next = next_node.next
+                  next_next_node.prev = next_node.prev
+                  del next_node
+                  break
+      
+      if __name__ == '__main__':
+          print('연결리스트 초기화 후')
+          init_list()
+          print_list()
+      
+          print('노드 C 추가 후')
+          insert_node('C')
+          print_list()
+      
+          print('노드 D의 삭제 후')
+          delete_node('D')
+          print_list()
+      ```
+
+      
