@@ -209,7 +209,6 @@
       # E
       ```
    
-
 2. ##### 이중 연결 리스트
 
    1. ###### 이중 연결 리스트?
@@ -329,6 +328,9 @@
                   next_next_node.prev = next_node.prev
                   del next_node
                   break
+              pre_node = next_node
+              next_node = next_node.next
+              next_next_node = next_node.next
       
       if __name__ == '__main__':
           print('연결리스트 초기화 후')
@@ -340,8 +342,17 @@
           print_list()
       
           print('노드 D의 삭제 후')
-          delete_node('D')
+    delete_node('D')
           print_list()
       ```
-
       
+      ```
+      노드 D의 삭제 후
+      A
+      B
+      C
+      E
+      ```
+      
+      
+

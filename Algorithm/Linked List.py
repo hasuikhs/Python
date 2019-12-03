@@ -55,6 +55,9 @@ def delete_node(del_data):
             next_next_node.prev = next_node.prev
             del next_node
             break
+        pre_node = next_node
+        next_node = next_node.next
+        next_next_node = next_node.next
 
 if __name__ == '__main__':
     print('연결리스트 초기화 후')
