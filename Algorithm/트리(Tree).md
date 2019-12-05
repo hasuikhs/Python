@@ -49,3 +49,171 @@
   ​						마지막 레벨의 노드들은 왼쪽으로 채워져 있고 마지막 레벨이 다 채워질 수도 있음.
 
 - **균형 이진 트리(balanced binary tree)** : 모든 단말 노드의 깊이 차이가 많아야 1인 트리.
+
+## 3. 트리의 순회 알고리즘
+
+![image-20191205223322809](트리(Tree).assets/image-20191205223322809.png)
+
+- **전위 순회(Pre-Order Traverse)** : A -> B -> D -> E -> C -> F -> G
+
+- **중위 순회(In-Order Traverse)** : D -> B -> E -> A -> F -> C -> G
+
+- **후위 순회(Post-Order Traverse)** : D -> E -> B -> F -> G -> C -> A
+
+- **단계 순위 순회(Level-Order Traverse)** : 위에서부터 차례대로 방문하는 순서
+
+  ​																	   A -> B -> C -> D -> E -> F -> G
+
+### 3.1 트리 선언 코드
+
+- 위의 그림처럼 만들어 보자
+
+```python
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+def init_tree():
+    global root
+
+    # A 노드를 root로
+    new_node = Node('A')
+    root = new_node
+    # B 노드를 만들고 A노드의 왼쪽으로
+    new_node = Node('B')
+    root.left = new_node
+    # C 노드를 만들고 A노드의 오른쪽으로
+    new_node = Node('C')
+    root.right = new_node
+
+    # D, E 노드를 만들고
+    new_node_1 = Node('D')
+    new_node_2 = Node('E')
+    # B 노드를 불러오고 D, E를 위치로
+    node = root.left
+    node.left = new_node_1
+    node.right = new_node_2
+
+    # D, E 노드를 만들고
+    new_node_1 = Node('F')
+    new_node_2 = Node('G')
+    # B 노드를 불러오고 D, E를 위치로
+    node = root.right
+    node.left = new_node_1
+    node.right = new_node_2
+```
+
+### 3.2 전위 순회(Pre-Order Traverse) 알고리즘
+
+- 트리 구조를 순회하기 위해 반드시 지켜야 할 기본 규칙은 **노드는 오직 한번만 방문**한다.
+
+- A -> B -> D -> E -> C -> F -> G 로 돌아야 한다.
+
+  ![image-20191205223322809](트리(Tree).assets/image-20191205223322809.png)
+
+```python
+def preorder_traverse(node):
+    if node is None: return
+    print(node.data, end = ' -> ')
+    preorder_traverse(node.left)
+    preorder_traverse(node.right)
+
+if __name__ == '__main__':
+    init_tree()
+    print('<Preorder Traverse>')
+    preorder_traverse(root)
+```
+
+```
+<Preorder Traverse>
+A -> B -> D -> E -> C -> F -> G -> 
+```
+
+### 3.3 중위 순회(In-Order Traverse) 알고리즘
+
+- **왼쪽 자식 노드를 방문하고 그 다음 부모 노드를 방무난 후 다시 오른쪽 자식 노드를 방문** 하는 알고리즘
+
+- D -> B -> E -> A -> F -> C -> G
+
+  ![image-20191205223322809](트리(Tree).assets/image-20191205223322809.png)
+
+```python
+def inorder_traverse(node):
+    if node is None: return
+    inorder_traverse(node.left)
+    print(node.data, end = ' -> ')
+    inorder_traverse(node.right)
+    
+if __name__ == '__main__':
+    init_tree()
+    print('<Inorder Traverse>')
+    inorder_traverse(root)
+```
+
+```
+<Inorder Traverse>
+D -> B -> E -> A -> F -> C -> G ->
+```
+
+### 3.4 후위 순회(Post-Order Taverse) 알고리즘
+
+- **왼쪽 자식 노드르 방문한후 오른쪽 자식 노드를 방문하고 부모 노드를 방문**
+
+- D -> E -> B -> F -> G -> C -> A
+
+  ![image-20191205223322809](트리(Tree).assets/image-20191205223322809.png)
+
+```python
+def postorder_traverse(node):
+    if node is None: return
+    postorder_traverse(node.left)
+    postorder_traverse(node.right)
+    print(node.data, end = ' - > ')
+
+if __name__ == '__main__':
+    init_tree()
+    print('<Postorder Traverse>')
+    postorder_traverse(root)
+```
+
+```
+<Postorder Traverse>
+D - > E - > B - > F - > G - > C - > A - >
+```
+
+### 3.5 단계 순회(Level-Order Traverse) 알고리즘
+
+- **루트 노드부터 단계 순서대로 왼쪽에서 오른쪽으로 방문**하는 알고리즘
+
+- A -> B -> C -> D -> E -> F -> G
+
+  ![image-20191205223322809](트리(Tree).assets/image-20191205223322809.png)
+
+```python
+levelq = []
+def levelorder_traverse(node):
+    global levelq
+    # 먼저 매개 변수로 받은 현재 노드인 node를 큐인 levelq에 저장
+    levelq.append(node)
+    while len(levelq) != 0:
+        # visit
+        visit_node = levelq.pop(0)
+        print(visit_node.data, end = ' -> ')
+        # child put
+        if visit_node.left != None:
+            levelq.append(visit_node.left)
+        if visit_node.right != None:
+            levelq.append(visit_node.right)
+            
+if __name__ == '__main__':
+    init_tree()
+    print('<Levelorder Traverse>')
+    levelorder_traverse(root)
+```
+
+```
+<Levelorder Traverse>
+A -> B -> C -> D -> E -> F -> G ->
+```
