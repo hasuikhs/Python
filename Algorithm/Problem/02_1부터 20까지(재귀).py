@@ -1,5 +1,5 @@
 def print_to_n(n):
-    if 0 > n:
+    if 0 < n:
         print_to_n(n-1)
     print(n)
 
