@@ -1,12 +1,12 @@
 # Selection / Insert Sort 알고리즘
 
-![img](Selection&Insert 정렬.assets/정렬_알고리즘.gif)
+![img](SelectionAndInsert_정렬.assets/정렬_알고리즘.gif)
 
 ## 1. 선택 정렬 알고리즘(Selection Sort)
 
 > 선택 정렬 알고리즘은 주변에서 손쉽게 접할 수 있는 정렬 알고리즘 중의 하나이다. 어떻게 선택 정렬 알고리즘이 실행되는지 살펴보도록 하자.
 
-![선택 정렬 알고리즘에 대한 이미지 검색결과](Selection&Insert 정렬.assets/253B5836546AF3F514.jpg)
+![선택 정렬 알고리즘에 대한 이미지 검색결과](SelectionAndInsert_정렬.assets/253B5836546AF3F514.jpg)
 
 - 기본 개념은 데이터의 처음부터 끝까지 훑어가면서 가장 작은 값을 찾은 후에 그 값을 첫번째 데이터와 자리를 바꾸는 방법으로 구현되는 정렬 알고리즘이다.
 
