@@ -69,3 +69,16 @@
    new_list = [tmp * 2 for tmp in my_list if tmp % 2 == 0]
    print(new_list)
    ```
+
+- 파이썬에서 인덱스 사용하여 for문 읽기
+
+  ```python
+  names = ['Bob', 'Alice', 'John', 'Cindy']
+  
+  for idx, name in enumerate(names):
+      print(name)
+      
+  # Bob
+  ```
+
+  
