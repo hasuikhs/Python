@@ -1,6 +1,6 @@
-## Python_4
+# Python_4
 
-1. #### 날짜(date, time, datetime)
+## 1. 날짜(date, time, datetime)
 
    - 현재 날짜
 
@@ -37,7 +37,7 @@
      print(today + days)
      ```
 
-2. #### print문
+## 2. print문
 
    ```python
    for tmp in range(10):
@@ -47,7 +47,7 @@
    # print 함수의 마지막 인자로 출력에 대한 제어가 가능
    ```
 
-3. #### for 문
+## 3. for 문
 
    ```python
    my_list = [1, 2, 3, 4, 5]

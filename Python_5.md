@@ -1,8 +1,8 @@
-## Python_5
+# Python_5
 
 ### python의 기본 자료구조(자료형)
 
-1. #### 내장함수
+## 1. 내장함수
 
    - 내장함수의 종류
 
@@ -76,7 +76,7 @@
      print(my_func(3))	# 103
      ```
 
-2. #### Python의 객체지향
+## 2. Python의 객체지향
 
    ```python
    # class :

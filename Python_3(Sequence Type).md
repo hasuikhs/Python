@@ -1,6 +1,6 @@
-## Python_3(Sequence Type)
+# Python_3(Sequence Type)
 
-1. #### range
+## 1. range
 
    - range는 숫자 sequence로 주로 for문에서 사용
 
@@ -33,7 +33,7 @@
          print(tmp)
      ```
 
-2. #### dict
+## 2. dict
 
    - 표현법은 JSON표현과 유사 {"name" : "홍길동", "age" : 30}
 
@@ -79,7 +79,7 @@
          print("{0}, {1}".format(key, my_dict[key]))
      ```
 
-3. #### set
+## 3. set
 
    - set의 가장 큰 특징 : 중복이 없는 저장장소, 순서가 없는 저장구조
 
@@ -115,7 +115,7 @@
      my_set.remove(1)
      ```
 
-4. #### bool
+## 4. bool
 
    ```python
    # 논리 상수인 True, False를 사용
@@ -126,7 +126,7 @@
    # 4. None => False간주
    ```
 
-5. #### python의 console 입출력
+## 5. python의 console 입출력
 
    ```python
    input_value = input("숫자를 입력하세요!")
@@ -137,7 +137,7 @@
    print(result)
    ```
 
-6. #### if문
+## 6. if문
 
    ```python
    area = ["seoul", "suwon", "busan"]

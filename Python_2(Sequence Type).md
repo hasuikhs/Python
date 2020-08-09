@@ -1,6 +1,6 @@
-## Python_2(Sequence Type)
+# Python_2(Sequence Type)
 
-1. #### LIST
+## 1. LIST
 
    - Java의 ArrayList와 상당히 유사
 
@@ -68,7 +68,7 @@
      my_list(my_list.index(1)) # index()는 찾는 값의 위치를 리턴
      ```
 
-2. #### TUPLE
+## 2. TUPLE
 
    - list와 거의 유사
 
