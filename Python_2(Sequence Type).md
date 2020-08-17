@@ -57,6 +57,12 @@
      my_list.append([5, 6, 7]) # [1, 2, 3, 4, [5, 6, 7]] <- 마지막 인덱스에 해당 인자를 삽입
      print(my_list)
      
+     my_list.insert(0, 2)	# [2, 1, 2, 3, 4, [5, 6, 7]] <- 특정 위치에 해당 인자 추가
+     print(my_list)
+     
+     del my_list(0)			# [1, 2, 3, 4, [5, 6, 7]]
+     my_list.remove(0)		# [2, 3, 4, [5, 6, 7]]
+     
      my_list.extend([8, 9, 10]) # [1, 2, 3, 4, [5, 6, 7], 8, 9, 10]  <- 리스트 확장
      print(my_list)
      
