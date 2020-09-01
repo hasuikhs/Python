@@ -94,7 +94,7 @@
   # init
   ```
 
-- class를 수정
+- class를 수정하여 `__new__` 제거
 
   ```python
   Class Flight:
