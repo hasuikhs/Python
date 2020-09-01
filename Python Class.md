@@ -117,7 +117,7 @@
 
 - python은 기본적으로 다른 언어에 존재하는 접근제어자(public, private, protected)가 없음
 
-- 기본적으로 모두 Public
+- 기본적으로 모두 Public으로 
 
 
 
