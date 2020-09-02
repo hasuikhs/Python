@@ -38,7 +38,7 @@
   ```python
   class Flight:
       def number(self):
-          return 'fly'
+          return 'FL902'
   ```
 
 - 인스턴스 메소드 접근
@@ -46,7 +46,7 @@
   ```python
   f= Flight()
   f.number()
-  # 'fly'
+  # 'FL902'
   ```
 
   - Python method의 첫번째 parameter는 관례적으로 self를 사용
@@ -57,7 +57,7 @@
 
     ```python
     Flight.number(f)
-    # fly
+    # FL902
     ```
 
 ### 2.2 생성자와 초기화자
@@ -82,7 +82,7 @@
           return super().__new__(cls)
       
       def number(self):
-          return 'fly'
+          return 'FL902'
   ```
 
 - 다시 인스턴스를 생성해보면
@@ -119,5 +119,74 @@
 
 - 기본적으로 모두 Public
 
+### 2.3 초기화자(`__init__`)에 객체의 불변성을 확립(유효성 검증)
 
+- 일반적으로 초기화자(`__init__`)에서 인스턴스의 불변성을 확립하는 것이 좋음
+
+- 인스턴스 생성시 들어올 값에 대하여 `__init__`에서 validation 수행
+
+- 비행기 번호는 앞에 두글자는 영문자와 대문자, 뒤의 숫자는 양의 정수
+
+- 위의 조건으로 class를 변경하면 인스턴스 생성시 규칙에 맞지 않는 값이 들어오면 ValueError 발생
+
+  ```python
+  class Flight:
+      
+      def __init__(self, number):
+          if not number[:2].isalpha():
+              raise ValueError('첫 두글자가 알파벳이 아님')
+          if not number[:2].isupper():
+              raise ValueError('첫 두글자가 대문자가 아님')
+          if not number[2:].isdigit():
+              raise ValueError('세번째 글자 이상이 양의 숫자가 아님')
+          self._number = number
+  ```
+
+### 2.4 비공개 속성
+
+- 위의 예처럼 `_` 언더바 한개는 내부적으로만 사용되는 변수라고 알리지만, 사실 값도 얻어올 수 있고 할당도 가능
+
+  ```python
+  f = Flight("FL902")
+  f._number
+  # 'FL902'
+  
+  f.number = 'abc'
+  f.number()
+  # abc
+  ```
+
+- 원칙적으로 접근을 막으려면 `__` 언더바 두개를 사용
+
+  ```python
+  class Flight:
+      
+      def __init__(self, number):
+          if not number[:2].isalpha():
+              raise ValueError('첫 두글자가 알파벳이 아님')
+          if not number[:2].isupper():
+              raise ValueError('첫 두글자가 대문자가 아님')
+          if not number[2:].isdigit():
+              raise ValueError('세번째 글자 이상이 양의 숫자가 아님')
+          self.__number = number
+          
+      def number(self):
+          return self.__number
+  ```
+
+- `number()` 인스턴스 method를 통해 내부에서는 접근 가능하나 인스턴스 `f`의 속성으로 접근시 에러 발생
+
+  ```python
+  f = Flight('FL902')
+  f.number()
+  # FL902
+  
+  f.__number
+  # error
+  ```
+
+### 2.5 오버로딩
+
+- python은 method 오버로딩이 없음
+- 만약 같은 이름의 method가 있다면 나중에 선언된 method 실행
 
