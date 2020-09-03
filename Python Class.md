@@ -117,7 +117,9 @@
 
 - python은 기본적으로 다른 언어에 존재하는 접근제어자(public, private, protected)가 없음
 
-- 기본적으로 모두 Public으로 
+- python은 기본적으로 모든 멤버가 public
+
+- 만약 특정 변수명이나 method를 private으로 만들어야 한다면 두개의 언더바(_)를 이름 앞에 붙이면 됨
 
 ### 2.3 초기화자(`__init__`)에 객체의 불변성을 확립(유효성 검증)
 
