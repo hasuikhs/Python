@@ -47,6 +47,36 @@
    # print 함수의 마지막 인자로 출력에 대한 제어가 가능
    ```
 
+- 한번에 두 변수를 출력하는 방법
+
+  ```python
+  print('A1', 'B2')
+  # A1 B2
+  ```
+
+  - 구분자 설정
+
+    ```python
+    print('A1', 'B2', sep=',')
+    # A1,B2
+    ```
+
+  - end 파라미터로 줄바꿈 처리 설정
+
+    ```python
+    print('aa', end= ' ')
+    print('bb')
+    # aa bb
+    ```
+
+  - join으로 묶어 리스트 출력
+
+    ```python
+    a = ['A', 'B']
+    print(' '.join(a))
+    # A B
+    ```
+
 ## 3. for 문
 
    ```python
